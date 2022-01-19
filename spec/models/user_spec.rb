@@ -53,25 +53,25 @@ RSpec.describe User, type: :model do
         it 'firstnameが全角（漢字・ひらがな・カタカナ）以外だとユーザー登録できないこと' do
           @user.firstname = 'yamada'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Firstname is invalid")
+          expect(@user.errors.full_messages).to include('Firstname is invalid')
         end
 
         it 'lastnameが全角（漢字・ひらがな・カタカナ）以外だとユーザー登録できないこと' do
           @user.lastname = 'tarou'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Lastname is invalid")
+          expect(@user.errors.full_messages).to include('Lastname is invalid')
         end
 
         it 'firstname_kanaが全角（カタカナ）以外だとユーザー登録できないこと' do
           @user.firstname_kana = '山田'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Firstname kana is invalid")
+          expect(@user.errors.full_messages).to include('Firstname kana is invalid')
         end
 
         it 'lastname_kanaが全角（カタカナ）以外だとユーザー登録できないこと' do
           @user.lastname_kana = '太郎'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Lastname kana is invalid")
+          expect(@user.errors.full_messages).to include('Lastname kana is invalid')
         end
 
         it 'birthdayが空欄だと登録できないこと' do
@@ -90,21 +90,21 @@ RSpec.describe User, type: :model do
           @user.password = 'a1234'
           @user.password_confirmation = 'a1234'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+          expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
         end
 
         it 'passwordが半角英字のみだとユーザー登録できないこと' do
           @user.password = 'abcdef'
           @user.password_confirmation = 'abcdef'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password is invalid")
+          expect(@user.errors.full_messages).to include('Password is invalid')
         end
 
         it 'passwordが半角数字のみだとユーザー登録できない' do
           @user.password = '123456'
           @user.password_confirmation = '123456'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password is invalid")
+          expect(@user.errors.full_messages).to include('Password is invalid')
         end
 
         it 'passwordとpassword_confirmationが不一致では登録できないこと' do
@@ -124,7 +124,7 @@ RSpec.describe User, type: :model do
           @user.save
           another_user = FactoryBot.build(:user, email: @user.email)
           another_user.valid?
-          expect(another_user.errors.full_messages).to include("Email has already been taken")
+          expect(another_user.errors.full_messages).to include('Email has already been taken')
         end
 
         it 'emailに@が含まれていないとユーザー登録できないこと' do
