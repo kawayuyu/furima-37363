@@ -11,13 +11,14 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :name
-    validates :price
     validates :detail
     validates :category_id
     validates :status_id
     validates :delivery_fee_id
     validates :prefecture_id
     validates :scheduled_delivery_id
+    validates :price, numericality: { greater_than_or_equal_to: 300 }
+    validates :price, numericality: { less_than_or_equal_to: 9_999_999 }
   end
 
   with_options numericality: { other_than: 1 } do
