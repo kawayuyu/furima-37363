@@ -21,7 +21,7 @@ RSpec.describe Item, type: :model do
         it 'userが紐付いていなければ出品できないこと' do
           @item.user = nil
           @item.valid?
-          expect(@item.errors.full_messages).to include("User must exist")
+          expect(@item.errors.full_messages).to include('User must exist')
         end
 
         it 'imageが空欄だと出品できないこと' do
