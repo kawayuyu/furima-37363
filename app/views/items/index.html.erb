@@ -123,11 +123,29 @@
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
-    <div class="subtitle" >
-      新規投稿商品
-    </div>
+    <%= link_to '新規投稿商品', items_path, class: "subtitle" %>
     <ul class='item-lists'>
-
+    <%# 商品一覧機能で実装 %>
+    <%# @items.each do |item| %>
+     <%#<div class="item">
+      <div class="item-category">
+       <%= item.category.name %>
+      <%#</div>
+      <div class="item-sales-status">
+       <%= item.status.name %>
+      <%#</div>
+      <div class="item-shipping-fee-status">
+       <%= item.delivery_fee.name %>
+      <%#</div>
+      <div class="item-prefecture">
+       <%= item.prefecture.name %>
+      <%#</div>
+      <div class="item-scheduled-delivery">
+       <%= item.scheduled_delivery.name %>
+      <%#</div>
+     </div>
+    <% end %>
+    <%# 商品一覧機能で実装 %>
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
         <%= link_to "#" do %>
@@ -182,8 +200,10 @@
   </div>
   <%# /商品一覧 %>
 </div>
-<%= link_to('#', class: 'purchase-btn') do %>
+<div class='purchase-btn'>
   <span class='purchase-btn-text'>出品する</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-<% end %>
+  <a href="#">
+    <%= link_to image_tag('icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon", ), new_item_path %>
+  </a>
+</div>
 <%= render "shared/footer" %>
