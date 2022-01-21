@@ -18,8 +18,8 @@ class Item < ApplicationRecord
     validates :delivery_fee_id
     validates :prefecture_id
     validates :scheduled_delivery_id
-    validates :price, numericality: { greater_than_or_equal_to: 300 }
-    validates :price, numericality: { less_than_or_equal_to: 9_999_999 }
+    validates :price, numericality: { greater_than_or_equal_to: 300, only_integer: true  }
+    validates :price, numericality: { less_than_or_equal_to: 9_999_999, only_integer: true  }
   end
 
   with_options numericality: { other_than: 1 } do

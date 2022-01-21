@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @items = Item.all.order(created_at: :desc)
+    #@items = Item.all.order(created_at: :desc) 商品一覧機能で実装
   end
 
   def new
