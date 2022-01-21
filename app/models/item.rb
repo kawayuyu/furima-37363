@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   belongs_to :scheduled_delivery
 
   with_options presence: true do
+    validates :image
     validates :name
     validates :detail
     validates :category_id
