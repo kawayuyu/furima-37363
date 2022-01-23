@@ -128,7 +128,7 @@
   <% if @items.present? %>
     <% @items.each do |item| %>
       <li class='list'>
-       <%#= link_to item_path(item) do 商品詳細機能時実装 %> 
+       <%= link_to item_path(item) do %> 
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
@@ -154,7 +154,7 @@
             </div>
           </div>
         </div>
-       <%# end 商品詳細機能時実装 %>
+       <% end %>
       </li>
     <% end %>
   <% else %>
