@@ -9,7 +9,7 @@ class PurchaseAddress
     validates :prefecture_id
     validates :city
     validates :house_number
-    validates :tel, numericality: { less_than_or_equal_to: 11 }
+    validates :tel, format: { with: /\A\d{10,11}\z/ }
 end
 
   with_options numericality: { other_than: 1 } do
