@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
 
   def index
@@ -7,7 +8,6 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase_address = PurchaseAddress.new(purchase_params)
-    # binding.pry
     if @purchase_address.valid?
       pay_item
       @purchase_address.save
@@ -25,6 +25,9 @@ class PurchasesController < ApplicationController
   
   def set_item
     @item = Item.find(params[:item_id])
+    if @item.user_id == current_user.id || @item.purchase != nil
+      redirect_to root_path
+    end
   end
 
   def pay_item
