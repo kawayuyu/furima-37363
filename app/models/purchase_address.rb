@@ -9,6 +9,8 @@ class PurchaseAddress
     validates :house_number
     validates :tel, format: { with: /\A\d{10,11}\z/ }
     validates :token
+    validates :item_id
+    validates :user_id
   end
 
   with_options numericality: { other_than: 1 } do
