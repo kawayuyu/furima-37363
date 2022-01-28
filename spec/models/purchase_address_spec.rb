@@ -16,7 +16,6 @@ RSpec.describe PurchaseAddress, type: :model do
           @purchase_address.building_name = ''
           expect(@purchase_address).to be_valid
         end
-
       end
 
       context '登録できないとき' do
@@ -27,7 +26,7 @@ RSpec.describe PurchaseAddress, type: :model do
         end
 
         it 'postal_codeにハイフンが含まれていないと登録できないこと' do
-          @purchase_address.postal_code = 1111111
+          @purchase_address.postal_code = 1_111_111
           @purchase_address.valid?
           expect(@purchase_address.errors.full_messages).to include('Postal code is invalid')
         end
@@ -39,9 +38,9 @@ RSpec.describe PurchaseAddress, type: :model do
         end
 
         it 'prefecture_idが1だと登録できないこと' do
-          @purchase_address.prefecture_id= 1
+          @purchase_address.prefecture_id = 1
           @purchase_address.valid?
-          expect(@purchase_address.errors.full_messages). to include('Prefecture must be other than 1') 
+          expect(@purchase_address.errors.full_messages).to include('Prefecture must be other than 1')
         end
 
         it 'cityが空欄だと登録できないこと' do
@@ -59,7 +58,7 @@ RSpec.describe PurchaseAddress, type: :model do
         it 'telが空欄だと登録できないこと' do
           @purchase_address.tel = nil
           @purchase_address.valid?
-          expect(@purchase_address.errors.full_messages).to include("Tel can't be blank", "Tel is invalid")
+          expect(@purchase_address.errors.full_messages).to include("Tel can't be blank", 'Tel is invalid')
         end
 
         it 'telにハイフンがあると登録できないこと' do
