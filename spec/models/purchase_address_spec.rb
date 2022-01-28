@@ -8,7 +8,7 @@ RSpec.describe PurchaseAddress, type: :model do
 
     describe '購入登録' do
       context '登録できるとき' do
-        it 'postal_code,prefecture,city,house_number,telの値が存在すれば登録できること' do
+        it '必須項目が全てあれば登録できること' do
           expect(@purchase_address).to be_valid
         end
 
@@ -74,7 +74,11 @@ RSpec.describe PurchaseAddress, type: :model do
           expect(@purchase_address.errors.full_messages).to include('Tel is invalid')
         end
 
-
+        it 'tokenが空欄だと登録できないこと' do
+          @purchase_address.token = nil
+          @purchase_address.valid?
+          expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
+        end
       end
     end
   end
